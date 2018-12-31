@@ -212,7 +212,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     FirebaseAdMob.instance.initialize(appId: 'ca-app-pub-4056098139575656~6402453173');
-    // _bannerAd = createBannerAd()..load()..show(anchorType: AnchorType.bottom, anchorOffset: 55.0);
+    _bannerAd = createBannerAd()..load()..show(anchorType: AnchorType.bottom, anchorOffset: 55.0);
   }
 
   @override
