@@ -10,21 +10,37 @@ import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart
 import 'package:flutter_advanced_networkimage/zoomable_widget.dart';
 import 'package:flutter_advanced_networkimage/transition_to_image.dart';
 import 'package:firebase_admob/firebase_admob.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
 
 import 'package:simplexkcd/xkcd.dart';
 import 'package:simplexkcd/viewer.dart';
 
-void main() => runApp(MaterialApp(
-  title: 'Simple xkcd',
-  home: MyApp(),
-  theme: new ThemeData(
-    pageTransitionsTheme: PageTransitionsTheme(
-      builders: <TargetPlatform, PageTransitionsBuilder>{
-        TargetPlatform.android: CupertinoPageTransitionsBuilder()
-      }
-    )
-  ),
-));
+void main() => runApp(AppContainer());
+
+class AppContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DynamicTheme(
+      defaultBrightness: Brightness.light,
+      data: (brightness) => new ThemeData(
+        primarySwatch: Colors.blue,
+        brightness: brightness,
+        pageTransitionsTheme: PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: CupertinoPageTransitionsBuilder()
+          }
+        )
+      ),
+      themedWidgetBuilder: (context, theme) {
+        return MaterialApp(
+          title: 'Simple xkcd',
+          home: MyApp(),
+          theme: theme
+        );
+      },
+    );
+  }
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -173,6 +189,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _changeTeme() {
+    DynamicTheme.of(context).setBrightness(Theme.of(context).brightness == Brightness.dark? Brightness.light: Brightness.dark);
+  }
+
   @override
   void dispose() {
     _bannerAd.dispose();
@@ -200,6 +220,13 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Simple xkcd'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.color_lens),
+            tooltip: 'Change Theme',
+            onPressed: _changeTeme,
+          )
+        ],
       ),
       body: getBody(),
       bottomNavigationBar: BottomNavigationBar(
