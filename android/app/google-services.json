@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1054428848750",
+    "firebase_url": "https://simplexkcd.firebaseio.com",
+    "project_id": "simplexkcd",
+    "storage_bucket": "simplexkcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054428848750:android:82d88f45ff0ca164",
+        "android_client_info": {
+          "package_name": "com.daniona.simplexkcd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054428848750-367o7dgm8p9rh6bks7jo9gus43m4f1uf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKL1Pvm7EUnQ42pbnMCOg-ZVXp8z9ydIY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
